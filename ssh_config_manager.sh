@@ -1,9 +1,13 @@
 #!/bin/bash
 
+shopt -s expand_aliases
+source $HOME/.bash_aliases
+
 file_name="$HOME/config"
 
 function log_and_exec(){
 	printf "\n%s ..\n" "$1"
+    #echo "${2}"
 	eval $2
 	printf "Done!\n"
 }
@@ -77,7 +81,6 @@ function menu(){
                 read -p 'Enter host alias: ' host
                 log_message="Removing ${host} host in the config file"
                 log_and_exec "$log_message" "remove_entry ${host}"
-   echo -e '\nWork In Progress'
                 return 1
                 ;;
             Quit)
